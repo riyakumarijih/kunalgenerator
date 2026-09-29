@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUNAL GENERATOR 2026</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #030712;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow {
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+        }
+        /* VIP Output for Text Mode */
+        .vip-output {
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        /* Normal Output for Emoji Mode to keep real emoji colors */
+        .normal-output {
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: initial !important;
+            color: #ffffff !important;
+            font-weight: 600;
+        }
+        .gradient-label {
+            background: linear-gradient(to right, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Colorful Gradient Text inside Input Field */
+        .colorful-input {
+            background: linear-gradient(135deg, #38bdf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-between p-4 sm:p-6">
+
+    <!-- Background Ambient Glows -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Main Container -->
+    <div class="w-full max-w-xl glass-card rounded-3xl p-6 sm:p-8 shadow-2xl relative z-10 my-auto">
+        
+        <!-- Header with Name -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-teal-300 to-purple-500 neon-glow">
+                ⚡ KUNAL GENERATOR
+            </h1>
+            <p class="text-sm text-gray-400 mt-2 uppercase tracking-wide font-semibold">NEXT-GEN TEXT, EMOJI & CUSTOM TOOL SUITE</p>
+        </div>
+
+        <!-- Mode Selector Tabs -->
+        <div class="grid grid-cols-2 gap-3 mb-6 bg-gray-900/80 p-1.5 rounded-2xl border border-gray-800">
+            <button onclick="switchTab('emoji')" id="tabEmoji" class="py-3 text-sm font-semibold rounded-xl transition-all duration-300 bg-blue-600 text-white shadow-lg shadow-blue-600/30 cursor-pointer">
+                🌹 EMOJI MODE
+            </button>
+            <button onclick="switchTab('text')" id="tabText" class="py-3 text-sm font-semibold rounded-xl transition-all duration-300 text-gray-400 hover:text-white cursor-pointer">
+                🔥 TEXT MODE
+            </button>
+        </div>
+
+        <!-- Input Section -->
+        <div class="space-y-4">
+            <div>
+                <label id="inputLabel" class="block text-xs font-bold uppercase tracking-wider gradient-label mb-2">ENTER EMOJI OR SYMBOL</label>
+                <!-- Default value is 🌹 for Emoji Mode -->
+                <input type="text" id="userInput" placeholder="e.g. 🌹 or ❤️" class="w-full bg-gray-900/90 border border-gray-800 rounded-2xl px-4 py-3.5 text-white font-semibold focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all text-base" value="🌹">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-wider gradient-label mb-2">REPEAT COUNT</label>
+                <input type="number" id="userCount" placeholder="10000" value="10000" min="1" max="50000" class="w-full bg-gray-900/90 border border-gray-800 rounded-2xl px-4 py-3.5 text-white font-semibold focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all text-base">
+            </div>
+
+            <button onclick="generateOutput()" class="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold rounded-2xl shadow-xl shadow-blue-600/20 transition-all duration-300 transform active:scale-98 cursor-pointer">
+                ✨ GENERATE NOW
+            </button>
+        </div>
+
+        <!-- Output Section -->
+        <div class="mt-6 space-y-2">
+            <div class="flex justify-between items-center">
+                <label class="text-xs font-bold uppercase tracking-wider gradient-label">RESULT OUTPUT</label>
+                <span id="charCount" class="text-xs font-semibold text-cyan-400">0 CHARACTERS</span>
+            </div>
+            
+            <!-- Output box defaults to normal-output so emojis retain real colors -->
+            <textarea id="outputResult" readonly placeholder="YOUR GENERATED OUTPUT WILL APPEAR HERE..." class="w-full h-40 bg-gray-900/90 border border-blue-500/40 rounded-2xl p-4 text-sm normal-output focus:outline-none resize-none font-mono shadow-inner shadow-blue-500/10 overflow-y-scroll"></textarea>
+            
+            <button onclick="copyToClipboard()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl shadow-xl shadow-emerald-600/20 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer">
+                <span>📋 COPY TO CLIPBOARD</span>
+            </button>
+            <div id="notifyMsg" class="text-center text-xs font-medium text-emerald-400 h-4"></div>
+        </div>
+
+    </div>
+
+    <!-- Footer / Creator & Terms Section -->
+    <footer class="mt-8 text-center text-xs text-gray-500 relative z-10 flex flex-col items-center gap-2">
+        <div class="flex items-center gap-3 text-gray-400 font-medium uppercase">
+            <button onclick="openModal('terms')" class="hover:text-blue-400 transition-colors cursor-pointer">TERMS & CONDITIONS</button>
+            <span>•</span>
+            <button onclick="openModal('privacy')" class="hover:text-blue-400 transition-colors cursor-pointer">PRIVACY POLICY</button>
+            <span>•</span>
+            <button onclick="openModal('disclaimer')" class="hover:text-blue-400 transition-colors cursor-pointer">DISCLAIMER</button>
+        </div>
+        <p class="font-semibold text-gray-400 mt-1 uppercase">DEVELOPED WITH 🔥 BY KUNAL</p>
+        <p class="uppercase">KUNAL GENERATOR © 2026. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <!-- Popup Modal for Terms/Privacy -->
+    <div id="legalModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+        <div class="bg-gray-900 border border-gray-800 w-full max-w-md rounded-3xl p-6 relative shadow-2xl">
+            <h3 id="modalTitle" class="text-lg font-bold text-blue-400 mb-3 uppercase">TITLE</h3>
+            <p id="modalText" class="text-xs text-gray-300 leading-relaxed mb-6"></p>
+            <button onclick="closeModal()" class="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-sm transition-all cursor-pointer">CLOSE</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        let currentMode = 'emoji';
+
+        function switchTab(mode) {
+            currentMode = mode;
+            const label = document.getElementById('inputLabel');
+            const input = document.getElementById('userInput');
+            const outputBox = document.getElementById('outputResult');
+            const tabEmoji = document.getElementById('tabEmoji');
+            const tabText = document.getElementById('tabText');
+
+            if (mode === 'emoji') {
+                tabEmoji.className = "py-3 text-sm font-semibold rounded-xl transition-all duration-300 bg-blue-600 text-white shadow-lg shadow-blue-600/30 cursor-pointer";
+                tabText.className = "py-3 text-sm font-semibold rounded-xl transition-all duration-300 text-gray-400 hover:text-white cursor-pointer";
+                label.innerText = "ENTER EMOJI OR SYMBOL";
+                input.value = "🌹";
+                input.className = "w-full bg-gray-900/90 border border-gray-800 rounded-2xl px-4 py-3.5 text-white font-semibold focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all text-base";
+                
+                // Output box mein real emoji colors dikhane ke liye normal class lagayein
+                outputBox.classList.remove('vip-output');
+                outputBox.classList.add('normal-output');
+            } else {
+                tabText.className = "py-3 text-sm font-semibold rounded-xl transition-all duration-300 bg-blue-600 text-white shadow-lg shadow-blue-600/30 cursor-pointer";
+                tabEmoji.className = "py-3 text-sm font-semibold rounded-xl transition-all duration-300 text-gray-400 hover:text-white cursor-pointer";
+                label.innerText = "ENTER TEXT OR NAME";
+                input.value = "KUNAL";
+                input.className = "w-full bg-gray-900/90 border border-gray-800 rounded-2xl px-4 py-3.5 colorful-input focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all text-base";
+                
+                // Text mode ke liye vip gradient class lagayein
+                outputBox.classList.remove('normal-output');
+                outputBox.classList.add('vip-output');
+            }
+        }
+
+        function generateOutput() {
+            let val = document.getElementById('userInput').value;
+            let count = parseInt(document.getElementById('userCount').value) || 10;
+
+            if (!val) {
+                alert("PLEASE ENTER SOME TEXT OR EMOJI!");
+                return;
+            }
+
+            if (count > 50000) {
+                count = 50000; 
+                document.getElementById('userCount').value = 50000;
+            }
+
+            if (currentMode === 'text') {
+                val = val.toUpperCase();
+            }
+
+            let finalString = new Array(count).fill(val).join("\n");
+            let outputBox = document.getElementById('outputResult');
+            outputBox.value = finalString;
+            document.getElementById('charCount').innerText = `${finalString.length} CHARACTERS`;
+            
+            showNotification("SUCCESSFULLY GENERATED! ✨", "text-emerald-400");
+        }
+
+        function copyToClipboard() {
+            let outputBox = document.getElementById('outputResult');
+            if (!outputBox.value) {
+                alert("PLEASE GENERATE SOME TEXT FIRST TO COPY!");
+                return;
+            }
+
+            outputBox.select();
+            navigator.clipboard.writeText(outputBox.value).then(() => {
+                showNotification("COPIED TO CLIPBOARD! 📋", "text-emerald-400");
+            }).catch(() => {
+                alert("FAILED TO COPY TEXT.");
+            });
+        }
+
+        function showNotification(msg, colorClass) {
+            let notify = document.getElementById('notifyMsg');
+            notify.className = `text-center text-xs font-medium h-4 ${colorClass}`;
+            notify.innerText = msg;
+            setTimeout(() => {
+                notify.innerText = "";
+            }, 3000);
+        }
+
+        function openModal(type) {
+            const modal = document.getElementById('legalModal');
+            const title = document.getElementById('modalTitle');
+            const text = document.getElementById('modalText');
+
+            modal.classList.remove('hidden');
+            modal.style.display = 'flex';
+
+            if (type === 'terms') {
+                title.innerText = "TERMS & CONDITIONS";
+                text.innerText = "BY USING KUNAL GENERATOR, YOU AGREE TO USE THIS TOOL FOR LAWFUL PURPOSES ONLY. WE DO NOT STORE ANY GENERATED TEXT OR USER DATA ON OUR SERVERS. ALL OPERATIONS RUN LOCALLY INSIDE YOUR BROWSER.";
+            } else if (type === 'privacy') {
+                title.innerText = "PRIVACY POLICY";
+                text.innerText = "YOUR PRIVACY IS IMPORTANT TO US. KUNAL GENERATOR DOES NOT COLLECT, STORE, OR SHARE ANY PERSONAL INFORMATION OR TEXT GENERATED THROUGH THIS APPLICATION. ALL DATA REMAINS STRICTLY ON YOUR DEVICE.";
+            } else if (type === 'disclaimer') {
+                title.innerText = "DISCLAIMER";
+                text.innerText = "THIS TOOL IS PROVIDED 'AS IS' WITHOUT WARRANTIES OF ANY KIND. WE ARE NOT RESPONSIBLE FOR ANY MISUSE OF THE GENERATED TEXT OR SYSTEM LIMITATIONS CAUSED BY ENTERING EXCESSIVELY LARGE REPEAT COUNTS.";
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('legalModal');
+            modal.style.display = 'none';
+            modal.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
